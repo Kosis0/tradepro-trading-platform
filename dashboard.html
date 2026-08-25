@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — TradePro</title>
+  <meta name="description" content="Your TradePro account overview: equity, performance, portfolio allocation, positions, transactions and funding.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('tp_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/pages/dashboard.css">
+</head>
+<body data-page="dashboard">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="30" height="30">Trade<span>Pro</span></a>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="markets.html">Markets</a></li>
+          <li><a href="trade.html">Trade</a></li>
+          <li><a href="#overview" aria-current="page">Dashboard</a></li>
+        </ul>
+        <div class="nav-cta">
+          <span data-auth="guest"><a href="login.html" class="btn btn-primary">Log in</a></span>
+          <span data-auth="user">
+            <div class="user-menu">
+              <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false">
+                <span class="avatar" data-user-initials>U</span>
+                <span data-user-name>Account</span>
+                <i class="fa-solid fa-chevron-down" style="font-size:.65rem;color:var(--text-3)"></i>
+              </button>
+              <div class="user-menu-panel" role="menu">
+                <div class="user-menu-header"><strong data-user-name>User</strong><span data-user-email>email@example.com</span></div>
+                <a href="#account" role="menuitem"><i class="fa-solid fa-user-gear"></i> Account settings</a>
+                <button type="button" role="menuitem" class="menu-danger" data-action="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button>
+              </div>
+            </div>
+          </span>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i>
+        </button>
+        <button type="button" class="icon-btn nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+          <span class="burger-box"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container dash-layout">
+
+      <aside class="dash-side">
+        <div class="card card-pad dash-user-card">
+          <div class="dash-user">
+            <span class="avatar avatar-lg" data-user-initials>U</span>
+            <div>
+              <strong data-user-name>Trader</strong>
+              <small class="muted">Standard · verified</small>
+            </div>
+          </div>
+          <dl class="dash-balance">
+            <dt>Equity</dt>
+            <dd id="sb-equity" class="num">—</dd>
+            <div class="balance-sub num">
+              <span>Cash <b id="sb-cash">—</b></span>
+              <span>Floating <b id="sb-floating">—</b></span>
+            </div>
+          </dl>
+          <div class="side-actions">
+            <a href="#funding" class="btn btn-primary btn-sm" data-nav><i class="fa-solid fa-plus"></i> Deposit</a>
+            <a href="trade.html" class="btn btn-secondary btn-sm"><i class="fa-solid fa-bolt"></i> Trade</a>
+          </div>
+        </div>
+
+        <nav class="card dash-nav" aria-label="Dashboard sections">
+          <ul>
+            <li><a href="#overview" data-nav class="active"><i class="fa-solid fa-chart-pie"></i> Overview</a></li>
+            <li><a href="#portfolio" data-nav><i class="fa-solid fa-briefcase"></i> Portfolio</a></li>
+            <li><a href="#transactions" data-nav><i class="fa-solid fa-right-left"></i> Transactions</a></li>
+            <li><a href="#orders" data-nav><i class="fa-solid fa-list-check"></i> Orders</a></li>
+            <li><a href="#account" data-nav><i class="fa-solid fa-user-gear"></i> Account settings</a></li>
+            <li><a href="#security" data-nav><i class="fa-solid fa-shield-halved"></i> Security</a></li>
+            <li><a href="#funding" data-nav><i class="fa-solid fa-wallet"></i> Funding</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <section class="dash-content">
+
+        <div class="dash-section" id="overview">
+          <h1>Account overview</h1>
+          <div class="stats-grid">
+            <article class="card stat-card">
+              <header><h2>Equity</h2><i class="fa-solid fa-chart-line"></i></header>
+              <p class="stat-value num" id="stat-equity">—</p>
+              <p class="stat-cap muted">Cash + floating P/L</p>
+            </article>
+            <article class="card stat-card">
+              <header><h2>Balance</h2><i class="fa-solid fa-scale-balanced"></i></header>
+              <p class="stat-value num" id="stat-cash">—</p>
+              <p class="stat-cap muted">Realised funds available</p>
+            </article>
+            <article class="card stat-card">
+              <header><h2>Margin used</h2><i class="fa-solid fa-percent"></i></header>
+              <p class="stat-value num" id="stat-margin">—</p>
+              <p class="stat-cap muted">Locked by open positions</p>
+            </article>
+            <article class="card stat-card">
+              <header><h2>Free margin</h2><i class="fa-solid fa-coins"></i></header>
+              <p class="stat-value num" id="stat-free">—</p>
+              <p class="stat-cap muted">Available to open new trades</p>
+            </article>
+          </div>
+
+          <div class="card chart-card-dash">
+            <header class="panel-head">
+              <h2>Account performance</h2>
+              <label class="sr-only" for="perf-range">Range</label>
+              <select id="perf-range" class="control control--sm">
+                <option value="1d">Today</option>
+                <option value="1w">1 week</option>
+                <option value="1m" selected>1 month</option>
+                <option value="3m">3 months</option>
+                <option value="1y">1 year</option>
+              </select>
+            </header>
+            <div id="equity-chart"></div>
+            <div class="chart-fallback" id="equity-fallback" hidden>
+              <i class="fa-solid fa-plug-circle-xmark"></i>
+              <p>Chart library unavailable offline.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <header class="panel-head">
+              <h2>Open positions</h2>
+              <a href="trade.html" class="btn btn-secondary btn-sm">New trade <i class="fa-solid fa-arrow-right"></i></a>
+            </header>
+            <div class="table-scroll">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Symbol</th>
+                    <th scope="col">Side</th>
+                    <th scope="col" class="cell-num">Lots</th>
+                    <th scope="col" class="cell-num hide-md-col">Entry</th>
+                    <th scope="col" class="cell-num">Current</th>
+                    <th scope="col" class="cell-num">P/L</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody id="dash-positions-body"></tbody>
+              </table>
+            </div>
+            <div class="empty-state empty-compact" id="dash-positions-empty" hidden>
+              <i class="fa-solid fa-folder-open"></i>
+              <h4>No open positions</h4>
+              <p>Head to the terminal to place your first trade.</p>
+              <a href="trade.html" class="btn btn-primary btn-sm" style="margin-top:12px">Open terminal</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-section" id="portfolio" hidden>
+          <h1>Portfolio</h1>
+          <div class="portfolio-grid">
+            <div class="card card-pad alloc-card">
+              <h2>Allocation</h2>
+              <div class="donut-wrap">
+                <div class="donut" id="alloc-donut" role="img" aria-label="Portfolio allocation by asset class"></div>
+                <div class="donut-center num"><small>Total</small><strong id="alloc-total">—</strong></div>
+              </div>
+              <ul class="alloc-legend" id="alloc-legend"></ul>
+            </div>
+            <div class="card holdings-card">
+              <header class="panel-head"><h2>Holdings</h2></header>
+              <div class="table-scroll">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Instrument</th>
+                      <th scope="col" class="cell-num">Lots</th>
+                      <th scope="col" class="cell-num hide-md-col">Avg entry</th>
+                      <th scope="col" class="cell-num">Value</th>
+                      <th scope="col" class="cell-num">P/L</th>
+                    </tr>
+                  </thead>
+                  <tbody id="holdings-body"></tbody>
+                </table>
+              </div>
+              <div class="empty-state empty-compact" id="holdings-empty" hidden>
+                <i class="fa-solid fa-box-open"></i>
+                <h4>Nothing here yet</h4>
+                <p>Your open positions will be grouped into holdings.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-section" id="transactions" hidden>
+          <h1>Transactions</h1>
+          <div class="card">
+            <header class="panel-head">
+              <h2>History</h2>
+              <label class="sr-only" for="tx-filter">Filter transactions</label>
+              <select id="tx-filter" class="control control--sm">
+                <option value="all">All types</option>
+                <option value="deposit">Deposits</option>
+                <option value="withdrawal">Withdrawals</option>
+                <option value="trading">Trading P/L</option>
+              </select>
+            </header>
+            <div class="table-scroll">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Method / detail</th>
+                    <th scope="col" class="cell-num">Amount</th>
+                    <th scope="col">Status</th>
+                    <th scope="col" class="hide-md-col">Date</th>
+                  </tr>
+                </thead>
+                <tbody id="tx-body"></tbody>
+              </table>
+            </div>
+            <div class="empty-state empty-compact" id="tx-empty" hidden>
+              <i class="fa-solid fa-receipt"></i>
+              <h4>No transactions yet</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-section" id="orders" hidden>
+          <h1>Order history</h1>
+          <div class="card">
+            <header class="panel-head">
+              <h2>All orders</h2>
+              <label class="sr-only" for="order-filter">Filter orders</label>
+              <select id="order-filter" class="control control--sm">
+                <option value="all">All statuses</option>
+                <option value="filled">Filled</option>
+                <option value="pending">Pending</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </header>
+            <div class="table-scroll">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Symbol</th>
+                    <th scope="col">Side</th>
+                    <th scope="col">Type</th>
+                    <th scope="col" class="cell-num">Lots</th>
+                    <th scope="col" class="cell-num hide-md-col">Price</th>
+                    <th scope="col">Status</th>
+                    <th scope="col" class="hide-md-col">Placed</th>
+                  </tr>
+                </thead>
+                <tbody id="orders-body"></tbody>
+              </table>
+            </div>
+            <div class="empty-state empty-compact" id="orders-empty" hidden>
+              <i class="fa-solid fa-clipboard-list"></i>
+              <h4>No orders match</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-section" id="account" hidden>
+          <h1>Account settings</h1>
+          <div class="two-col">
+            <form class="card card-pad" id="profile-form" novalidate>
+              <h2>Profile</h2>
+              <div class="form-grid-2">
+                <div class="field" data-field>
+                  <label for="pf-first">First name</label>
+                  <input class="control" id="pf-first" autocomplete="given-name" required>
+                  <p class="field-error"></p>
+                </div>
+                <div class="field" data-field>
+                  <label for="pf-last">Last name</label>
+                  <input class="control" id="pf-last" autocomplete="family-name" required>
+                  <p class="field-error"></p>
+                </div>
+              </div>
+              <div class="field">
+                <label for="pf-email">Email</label>
+                <input class="control" id="pf-email" type="email" disabled>
+                <p class="field-hint">Email changes require contacting support.</p>
+              </div>
+              <div class="field" data-field>
+                <label for="pf-phone">Phone</label>
+                <input class="control" id="pf-phone" type="tel" inputmode="tel">
+                <p class="field-error"></p>
+              </div>
+              <div class="field">
+                <label for="pf-country">Country</label>
+                <select class="control" id="pf-country"></select>
+              </div>
+              <button class="btn btn-primary" type="submit"><span class="spinner" aria-hidden="true"></span> Save changes</button>
+            </form>
+
+            <div class="stack">
+              <div class="card card-pad">
+                <h2>Preferences</h2>
+                <label class="check toggle-row">
+                  <input type="checkbox" id="pref-newsletter">
+                  <span><strong>Email market updates</strong><br><small class="muted">Weekly digest of market news and platform features.</small></span>
+                </label>
+                <hr>
+                <label class="check toggle-row">
+                  <input type="checkbox" id="pref-pricealerts">
+                  <span><strong>Price alerts</strong><br><small class="muted">Notify me when watchlist instruments move sharply.</small></span>
+                </label>
+              </div>
+              <div class="card card-pad danger-zone">
+                <h2>Demo data</h2>
+                <p class="small-text">Reset balances, positions, orders and users back to factory state. You will be signed out.</p>
+                <button type="button" class="btn btn-danger" id="reset-demo"><i class="fa-solid fa-rotate-left"></i> Reset demo environment</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-section" id="security" hidden>
+          <h1>Security</h1>
+          <div class="two-col">
+            <form class="card card-pad" id="password-form" novalidate>
+              <h2>Change password</h2>
+              <div class="field" data-field>
+                <label for="cur-password">Current password</label>
+                <input class="control" type="password" id="cur-password" autocomplete="current-password">
+                <p class="field-error"></p>
+              </div>
+              <div class="field" data-field>
+                <label for="new-password">New password</label>
+                <input class="control" type="password" id="new-password" autocomplete="new-password" minlength="8">
+                <p class="field-error"></p>
+              </div>
+              <div class="field" data-field>
+                <label for="conf-password">Confirm new password</label>
+                <input class="control" type="password" id="conf-password" autocomplete="new-password">
+                <p class="field-error"></p>
+              </div>
+              <button class="btn btn-primary" type="submit"><span class="spinner" aria-hidden="true"></span> Update password</button>
+            </form>
+
+            <div class="stack">
+              <div class="card card-pad">
+                <h2>Two-factor authentication</h2>
+                <label class="check toggle-row">
+                  <input type="checkbox" id="twofa-toggle">
+                  <span><strong>Authenticator app</strong><br><small class="muted">Require a 6-digit code from your authenticator when logging in.</small></span>
+                </label>
+                <p class="field-hint">Demo only — the setting is stored locally.</p>
+              </div>
+              <div class="card card-pad">
+                <h2>Active sessions</h2>
+                <ul class="sessions">
+                  <li>
+                    <i class="fa-solid fa-desktop"></i>
+                    <div><strong>This browser</strong><br><small class="muted" id="session-info">Current session</small></div>
+                    <button type="button" class="btn btn-secondary btn-sm" data-action="logout">Log out</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-section" id="funding" hidden>
+          <h1>Funding</h1>
+          <div class="funding-grid">
+            <div class="card card-pad fund-balance">
+              <h2>Available cash</h2>
+              <p class="fund-figure num" id="fund-cash">—</p>
+              <p class="muted small-text">Withdrawals are processed back to the original payment method.</p>
+            </div>
+
+            <form class="card card-pad" id="deposit-form" novalidate>
+              <h2>Deposit</h2>
+              <fieldset class="method-picker">
+                <legend class="sr-only">Deposit method</legend>
+                <label class="method"><input type="radio" name="dep-method" value="Visa •• 4242" checked><span><i class="fa-brands fa-cc-visa"></i> Card</span></label>
+                <label class="method"><input type="radio" name="dep-method" value="Wire transfer"><span><i class="fa-solid fa-building-columns"></i> Wire</span></label>
+                <label class="method"><input type="radio" name="dep-method" value="PayPal"><span><i class="fa-brands fa-paypal"></i> PayPal</span></label>
+              </fieldset>
+              <div class="field" data-field>
+                <label for="dep-amount">Amount (USD)</label>
+                <input class="control num" type="number" id="dep-amount" min="10" max="50000" step="10" placeholder="100">
+                <p class="field-error"></p>
+              </div>
+              <button class="btn btn-up btn-block" type="submit"><span class="spinner" aria-hidden="true"></span> Deposit funds</button>
+              <p class="field-hint">Min $10 · max $50,000 · instant in demo</p>
+            </form>
+
+            <form class="card card-pad" id="withdraw-form" novalidate>
+              <h2>Withdraw</h2>
+              <fieldset class="method-picker">
+                <legend class="sr-only">Withdrawal method</legend>
+                <label class="method"><input type="radio" name="wd-method" value="Visa •• 4242" checked><span><i class="fa-brands fa-cc-visa"></i> Card</span></label>
+                <label class="method"><input type="radio" name="wd-method" value="Wire transfer"><span><i class="fa-solid fa-building-columns"></i> Wire</span></label>
+              </fieldset>
+              <div class="field" data-field>
+                <label for="wd-amount">Amount (USD)</label>
+                <input class="control num" type="number" id="wd-amount" min="10" step="10" placeholder="50">
+                <p class="field-error"></p>
+              </div>
+              <button class="btn btn-secondary btn-block" type="submit"><span class="spinner" aria-hidden="true"></span> Request withdrawal</button>
+              <p class="field-hint">Processed within one business day in production.</p>
+            </form>
+          </div>
+
+          <div class="card">
+            <header class="panel-head"><h2>Recent funding activity</h2></header>
+            <div class="table-scroll">
+              <table class="table">
+                <thead><tr><th>Type</th><th>Method</th><th class="cell-num">Amount</th><th>Status</th><th class="hide-md-col">Date</th></tr></thead>
+                <tbody id="funding-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer footer-slim">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; <span data-year>2026</span> TradePro Markets Ltd.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="risk.html">Risk Disclosure</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/market-data.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js" defer></script>
+  <script src="assets/js/pages/dashboard.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create account — TradePro</title>
+  <meta name="description" content="Open a free TradePro trading account in under two minutes. Trade forex, stocks, indices, commodities and crypto from one platform.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('tp_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/pages/auth.css">
+</head>
+<body data-page="register">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="30" height="30">Trade<span>Pro</span></a>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="markets.html">Markets</a></li>
+          <li><a href="trade.html">Trade</a></li>
+          <li data-auth="user"><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <div class="nav-cta">
+          <span data-auth="guest"><a href="login.html" class="btn btn-ghost">Log in</a></span>
+          <span data-auth="user">
+            <div class="user-menu">
+              <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false">
+                <span class="avatar" data-user-initials>U</span>
+                <span data-user-name>Account</span>
+                <i class="fa-solid fa-chevron-down" style="font-size:.65rem;color:var(--text-3)"></i>
+              </button>
+              <div class="user-menu-panel" role="menu">
+                <div class="user-menu-header"><strong data-user-name>User</strong><span data-user-email>email@example.com</span></div>
+                <a href="dashboard.html" role="menuitem"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <button type="button" role="menuitem" class="menu-danger" data-action="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button>
+              </div>
+            </div>
+          </span>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i>
+        </button>
+        <button type="button" class="icon-btn nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+          <span class="burger-box"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="auth-shell">
+      <div class="container">
+        <div class="auth-card card auth-card--wide">
+          <header class="auth-head">
+            <h1>Create your account</h1>
+            <p>Start trading in minutes. No credit card required.</p>
+          </header>
+
+          <div class="form-alert" id="form-alert" role="alert" hidden></div>
+
+          <form id="register-form" novalidate>
+            <div class="form-grid-2">
+              <div class="field" data-field>
+                <label for="first-name">First name <span class="req">*</span></label>
+                <input class="control" type="text" id="first-name" autocomplete="given-name" placeholder="Jane" required>
+                <p class="field-error"></p>
+              </div>
+              <div class="field" data-field>
+                <label for="last-name">Last name <span class="req">*</span></label>
+                <input class="control" type="text" id="last-name" autocomplete="family-name" placeholder="Trader" required>
+                <p class="field-error"></p>
+              </div>
+            </div>
+
+            <div class="field" data-field>
+              <label for="email">Email address <span class="req">*</span></label>
+              <input class="control" type="email" id="email" autocomplete="email" placeholder="you@example.com" required>
+              <p class="field-error"></p>
+            </div>
+
+            <div class="field" data-field>
+              <label for="password">Password <span class="req">*</span></label>
+              <div class="input-group">
+                <input class="control" type="password" id="password" autocomplete="new-password" placeholder="8+ characters" required minlength="8">
+                <button type="button" class="input-action toggle-password" aria-label="Show password" aria-pressed="false"><i class="fa-solid fa-eye"></i></button>
+              </div>
+              <div class="strength" data-level="0" id="strength">
+                <div class="strength-bars">
+                  <span class="strength-bar"></span><span class="strength-bar"></span>
+                  <span class="strength-bar"></span><span class="strength-bar"></span>
+                </div>
+                <span class="strength-label" id="strength-label">Strength</span>
+              </div>
+              <p class="field-hint">Use at least 8 characters with a mix of letters, numbers and symbols.</p>
+              <p class="field-error"></p>
+            </div>
+
+            <div class="field" data-field>
+              <label for="confirm-password">Confirm password <span class="req">*</span></label>
+              <div class="input-group">
+                <input class="control" type="password" id="confirm-password" autocomplete="new-password" placeholder="Repeat your password" required>
+                <button type="button" class="input-action toggle-password" aria-label="Show password" aria-pressed="false"><i class="fa-solid fa-eye"></i></button>
+              </div>
+              <p class="field-error"></p>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="field" data-field>
+                <label for="country">Country of residence <span class="req">*</span></label>
+                <select class="control" id="country" required>
+                  <option value="" selected disabled>Select your country</option>
+                  <option value="AU">Australia</option>
+                  <option value="BR">Brazil</option>
+                  <option value="CA">Canada</option>
+                  <option value="AE">United Arab Emirates</option>
+                  <option value="FR">France</option>
+                  <option value="DE">Germany</option>
+                  <option value="IN">India</option>
+                  <option value="IT">Italy</option>
+                  <option value="JP">Japan</option>
+                  <option value="NL">Netherlands</option>
+                  <option value="SG">Singapore</option>
+                  <option value="ZA">South Africa</option>
+                  <option value="ES">Spain</option>
+                  <option value="GB">United Kingdom</option>
+                  <option value="US">United States</option>
+                  <option value="other">Other</option>
+                </select>
+                <p class="field-error"></p>
+              </div>
+              <div class="field" data-field>
+                <label for="phone">Phone <span class="muted">(optional)</span></label>
+                <input class="control" type="tel" id="phone" autocomplete="tel" inputmode="tel" placeholder="+1 555 000 1234">
+                <p class="field-error"></p>
+              </div>
+            </div>
+
+            <div class="field" data-field>
+              <label class="check">
+                <input type="checkbox" id="terms" required>
+                <span>I agree to the <a href="terms.html">Terms &amp; Conditions</a> and <a href="privacy.html">Privacy Policy</a>, and I understand the risks described in the <a href="risk.html">Risk Disclosure</a>.</span>
+              </label>
+              <p class="field-error"></p>
+            </div>
+
+            <div class="field" data-field>
+              <label class="check">
+                <input type="checkbox" id="newsletter" checked>
+                <span>Email me market news and platform updates.</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="register-submit">
+              <span class="spinner" aria-hidden="true"></span> Create account
+            </button>
+          </form>
+
+          <div class="divider" role="separator"><span>or sign up with</span></div>
+
+          <div class="social-grid">
+            <button type="button" class="btn btn-secondary social-btn" data-provider="Google"><i class="fa-brands fa-google" style="color:#DB4437"></i> Google</button>
+            <button type="button" class="btn btn-secondary social-btn" data-provider="Apple"><i class="fa-brands fa-apple"></i> Apple</button>
+          </div>
+
+          <p class="auth-alt">Already have an account? <a href="login.html">Log in</a></p>
+        </div>
+        <p class="auth-foot-note muted">Your data stays in your browser — this demo never sends information anywhere.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer footer-slim">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; <span data-year>2026</span> TradePro Markets Ltd.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="risk.html">Risk Disclosure</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/pages/auth.js" defer></script>
+</body>
+</html>

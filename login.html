@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in — TradePro</title>
+  <meta name="description" content="Log in to your TradePro trading account to access live markets, open positions and your portfolio dashboard.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('tp_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/pages/auth.css">
+</head>
+<body data-page="login">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="30" height="30">Trade<span>Pro</span></a>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="markets.html">Markets</a></li>
+          <li><a href="trade.html">Trade</a></li>
+          <li data-auth="user"><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <div class="nav-cta">
+          <span data-auth="guest"><a href="register.html" class="btn btn-primary">Get started</a></span>
+          <span data-auth="user">
+            <div class="user-menu">
+              <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false">
+                <span class="avatar" data-user-initials>U</span>
+                <span data-user-name>Account</span>
+                <i class="fa-solid fa-chevron-down" style="font-size:.65rem;color:var(--text-3)"></i>
+              </button>
+              <div class="user-menu-panel" role="menu">
+                <div class="user-menu-header"><strong data-user-name>User</strong><span data-user-email>email@example.com</span></div>
+                <a href="dashboard.html" role="menuitem"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <button type="button" role="menuitem" class="menu-danger" data-action="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button>
+              </div>
+            </div>
+          </span>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i>
+        </button>
+        <button type="button" class="icon-btn nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+          <span class="burger-box"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="auth-shell">
+      <div class="container">
+        <div class="auth-card card">
+          <header class="auth-head">
+            <h1>Welcome back</h1>
+            <p>Log in to access your trading account.</p>
+          </header>
+
+          <div class="demo-hint">
+            <div>
+              <strong>Demo account</strong>
+              <span class="mono">demo@tradepro.com · Demo1234!</span>
+            </div>
+            <button type="button" class="btn btn-secondary btn-sm" id="fill-demo">Fill</button>
+          </div>
+
+          <div class="form-alert" id="form-alert" role="alert" hidden></div>
+
+          <form id="login-form" novalidate>
+            <div class="field" data-field>
+              <label for="email">Email address</label>
+              <input class="control" type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+              <p class="field-error" id="email-error"></p>
+            </div>
+
+            <div class="field" data-field>
+              <label for="password">Password</label>
+              <div class="input-group">
+                <input class="control" type="password" id="password" name="password" autocomplete="current-password" placeholder="Your password" required>
+                <button type="button" class="input-action toggle-password" aria-label="Show password" aria-pressed="false"><i class="fa-solid fa-eye"></i></button>
+              </div>
+              <p class="field-error" id="password-error"></p>
+            </div>
+
+            <div class="auth-row">
+              <label class="check"><input type="checkbox" id="remember"> Remember me</label>
+              <a class="forgot-link" href="forgot-password.html">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="login-submit">
+              <span class="spinner" aria-hidden="true"></span> Log in
+            </button>
+          </form>
+
+          <div class="divider" role="separator"><span>or continue with</span></div>
+
+          <div class="social-grid">
+            <button type="button" class="btn btn-secondary social-btn" data-provider="Google"><i class="fa-brands fa-google" style="color:#DB4437"></i> Google</button>
+            <button type="button" class="btn btn-secondary social-btn" data-provider="Apple"><i class="fa-brands fa-apple"></i> Apple</button>
+          </div>
+
+          <p class="auth-alt">New to TradePro? <a href="register.html">Create a free account</a></p>
+        </div>
+        <p class="auth-foot-note muted">Protected by TLS encryption. Never share your password with anyone.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer footer-slim">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; <span data-year>2026</span> TradePro Markets Ltd.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="risk.html">Risk Disclosure</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/pages/auth.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+.markets-page { padding-bottom: 48px; }
+
+.markets-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.markets-toolbar .seg {
+  display: flex;
+  overflow-x: auto;
+  max-width: 100%;
+  scrollbar-width: none;
+}
+.markets-toolbar .seg::-webkit-scrollbar { display: none; }
+
+.toolbar-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search-wrap { position: relative; min-width: 220px; }
+.search-wrap i {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-3);
+  font-size: 0.85rem;
+  pointer-events: none;
+}
+.search-wrap .control { padding-left: 36px; }
+
+.filter-select select { width: auto; }
+
+.star-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-3);
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: color 0.15s var(--ease), background-color 0.15s var(--ease), transform 0.12s var(--ease);
+}
+.star-btn:hover { background: var(--surface-2); transform: scale(1.08); }
+.star-btn[aria-pressed="true"] { color: var(--star); }
+.star-btn[aria-pressed="true"]:hover { transform: scale(1.08) rotate(12deg); }
+
+.row-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.markets-footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+.markets-footer-bar p { font-size: 0.86rem; margin: 0; }
+
+.pager { display: flex; align-items: center; gap: 6px; }
+.pager-pages { display: flex; gap: 4px; }
+.pager-pages button {
+  min-width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 9px;
+  font-weight: 600;
+  font-size: 0.87rem;
+  cursor: pointer;
+  color: var(--text-2);
+  transition: background-color 0.15s var(--ease), color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+.pager-pages button:hover { border-color: var(--primary); color: var(--primary); }
+.pager-pages button[aria-current="page"] {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+@media (max-width: 760px) {
+  .hide-md { display: none; }
+  .toolbar-filters { width: 100%; }
+  .search-wrap { flex: 1; }
+  .filter-select { flex: 1; }
+  .filter-select select { width: 100%; }
+  .markets-footer-bar { justify-content: center; }
+}

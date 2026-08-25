@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trade — TradePro</title>
+  <meta name="description" content="Trade forex, stocks, indices, commodities and crypto on TradePro's web terminal with advanced charts, built-in indicators and one-click orders.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('tp_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/pages/trade.css">
+</head>
+<body data-page="trade">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="30" height="30">Trade<span>Pro</span></a>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="markets.html">Markets</a></li>
+          <li><a href="trade.html" aria-current="page">Trade</a></li>
+          <li data-auth="user"><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <div class="nav-cta">
+          <span data-auth="guest"><a href="login.html" class="btn btn-ghost">Log in</a></span>
+          <span data-auth="guest"><a href="register.html" class="btn btn-primary">Get started</a></span>
+          <span data-auth="user">
+            <div class="user-menu">
+              <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false">
+                <span class="avatar" data-user-initials>U</span>
+                <span data-user-name>Account</span>
+                <i class="fa-solid fa-chevron-down" style="font-size:.65rem;color:var(--text-3)"></i>
+              </button>
+              <div class="user-menu-panel" role="menu">
+                <div class="user-menu-header"><strong data-user-name>User</strong><span data-user-email>email@example.com</span></div>
+                <a href="dashboard.html" role="menuitem"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <button type="button" role="menuitem" class="menu-danger" data-action="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button>
+              </div>
+            </div>
+          </span>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i>
+        </button>
+        <button type="button" class="icon-btn nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+          <span class="burger-box"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="terminal container">
+
+      <div class="symbol-bar card card-pad">
+        <div class="symbol-pick">
+          <label class="sr-only" for="symbol-select">Instrument</label>
+          <select id="symbol-select" class="control"></select>
+        </div>
+        <div class="symbol-quote">
+          <div class="sq-price num" id="t-price">—</div>
+          <span class="badge badge-neutral num" id="t-chg">—</span>
+        </div>
+        <dl class="quote-stats num">
+          <div><dt>Bid</dt><dd id="t-bid">—</dd></div>
+          <div><dt>Ask</dt><dd id="t-ask">—</dd></div>
+          <div><dt>Spread</dt><dd id="t-spread">—</dd></div>
+          <div><dt>Day range</dt><dd id="t-range">—</dd></div>
+        </dl>
+      </div>
+
+      <div class="terminal-grid">
+
+        <div class="card chart-card">
+          <div class="chart-toolbar">
+            <div class="seg" id="tf-tabs" role="tablist" aria-label="Timeframe">
+              <button class="seg-btn" role="tab" data-tf="60" aria-selected="false">1m</button>
+              <button class="seg-btn" role="tab" data-tf="300" aria-selected="false">5m</button>
+              <button class="seg-btn" role="tab" data-tf="900" aria-selected="false">15m</button>
+              <button class="seg-btn" role="tab" data-tf="3600" aria-selected="true">1h</button>
+              <button class="seg-btn" role="tab" data-tf="14400" aria-selected="false">4h</button>
+              <button class="seg-btn" role="tab" data-tf="86400" aria-selected="false">1d</button>
+              <button class="seg-btn hide-sm" role="tab" data-tf="604800" aria-selected="false">1w</button>
+            </div>
+            <div class="toolbar-right">
+              <div class="seg" id="type-tabs" role="tablist" aria-label="Chart type">
+                <button class="seg-btn" role="tab" data-type="candles" aria-selected="true" title="Candlestick" aria-label="Candlestick chart"><i class="fa-solid fa-chart-column"></i></button>
+                <button class="seg-btn" role="tab" data-type="line" aria-selected="false" title="Line" aria-label="Line chart"><i class="fa-solid fa-chart-line"></i></button>
+                <button class="seg-btn" role="tab" data-type="area" aria-selected="false" title="Area" aria-label="Area chart"><i class="fa-solid fa-chart-area"></i></button>
+              </div>
+              <div class="indicator-wrap">
+                <label class="sr-only" for="indicator-select">Add indicator</label>
+                <select id="indicator-select" class="control control--sm">
+                  <option value="" selected disabled>+ Indicator</option>
+                  <option value="sma">SMA 20</option>
+                  <option value="ema">EMA 20</option>
+                  <option value="rsi">RSI 14</option>
+                  <option value="macd">MACD</option>
+                  <option value="bb">Bollinger Bands</option>
+                </select>
+              </div>
+              <button type="button" class="icon-btn" id="fullscreen-btn" aria-label="Toggle fullscreen chart"><i class="fa-solid fa-expand"></i></button>
+            </div>
+          </div>
+
+          <div id="active-indicators" class="active-indicators" hidden></div>
+
+          <div class="chart-stage">
+            <div id="trading-chart" role="img" aria-label="Price chart for the selected instrument"></div>
+            <div class="chart-fallback" id="chart-fallback" hidden>
+              <i class="fa-solid fa-plug-circle-xmark"></i>
+              <p><strong>Chart library unavailable.</strong><br>The interactive chart needs an internet connection to load. Orders still work using the live prices on this page.</p>
+            </div>
+            <div class="chart-legend mono" id="chart-legend" hidden>
+              <span>O <b id="lg-o">–</b></span>
+              <span>H <b id="lg-h">–</b></span>
+              <span>L <b id="lg-l">–</b></span>
+              <span>C <b id="lg-c">–</b></span>
+              <span class="chg" id="lg-chg"></span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="ticket-col">
+          <form class="card card-pad order-ticket" id="order-form" novalidate>
+            <h2 class="ticket-title">Order ticket</h2>
+
+            <div class="seg seg-block" id="order-kind" role="tablist" aria-label="Order type">
+              <button type="button" class="seg-btn" data-kind="market" aria-selected="true">Market</button>
+              <button type="button" class="seg-btn" data-kind="limit" aria-selected="false">Limit</button>
+              <button type="button" class="seg-btn" data-kind="stop" aria-selected="false">Stop</button>
+            </div>
+
+            <div class="side-toggle" role="radiogroup" aria-label="Direction">
+              <button type="button" class="side-btn buy active" id="side-buy" role="radio" aria-checked="true" data-side="buy"><i class="fa-solid fa-arrow-up"></i> Buy / Long</button>
+              <button type="button" class="side-btn sell" id="side-sell" role="radio" aria-checked="false" data-side="sell"><i class="fa-solid fa-arrow-down"></i> Sell / Short</button>
+            </div>
+
+            <div class="field">
+              <label for="order-amount">Amount (lots)</label>
+              <input class="control" type="number" id="order-amount" inputmode="decimal" min="0.01" step="0.01" value="0.10">
+              <div class="chip-row" id="amount-chips">
+                <button type="button" class="chip" data-amt="0.05">0.05</button>
+                <button type="button" class="chip" data-amt="0.1">0.1</button>
+                <button type="button" class="chip" data-amt="0.5">0.5</button>
+                <button type="button" class="chip" data-amt="1">1</button>
+              </div>
+              <p class="field-error" id="amount-error"></p>
+            </div>
+
+            <div class="field" id="limit-field" hidden>
+              <label for="limit-price">Limit price</label>
+              <input class="control num" type="number" id="limit-price" inputmode="decimal" step="any">
+              <p class="field-error"></p>
+            </div>
+
+            <div class="field" id="stop-field" hidden>
+              <label for="stop-price">Stop price</label>
+              <input class="control num" type="number" id="stop-price" inputmode="decimal" step="any">
+              <p class="field-error"></p>
+            </div>
+
+            <details class="risk-details">
+              <summary>Risk management <span class="muted">(optional)</span></summary>
+              <div class="field">
+                <label for="sl-input">Stop loss <small class="muted">· pips away</small></label>
+                <input class="control num" type="number" id="sl-input" inputmode="decimal" min="0" step="any" placeholder="e.g. 20">
+                <p class="field-hint" id="sl-hint"></p>
+              </div>
+              <div class="field">
+                <label for="tp-input">Take profit <small class="muted">· pips away</small></label>
+                <input class="control num" type="number" id="tp-input" inputmode="decimal" min="0" step="any" placeholder="e.g. 60">
+                <p class="field-hint" id="tp-hint"></p>
+              </div>
+            </details>
+
+            <dl class="ticket-summary num">
+              <div><dt>Notional value</dt><dd id="sum-notional">—</dd></div>
+              <div><dt>Margin required</dt><dd id="sum-margin">—</dd></div>
+              <div><dt>Pip value</dt><dd id="sum-pipval">—</dd></div>
+            </dl>
+
+            <button type="submit" class="btn btn-up btn-lg btn-block" id="place-order-btn">
+              <span class="spinner" aria-hidden="true"></span><span id="order-cta">Buy market</span>
+            </button>
+            <p class="ticket-note muted" data-auth="guest"><i class="fa-solid fa-circle-info"></i> You&rsquo;ll be asked to log in before placing an order.</p>
+          </form>
+
+          <div class="card positions-card">
+            <header class="positions-head">
+              <h2>Open positions</h2>
+              <span class="badge badge-primary num" id="pos-count">0</span>
+            </header>
+            <div class="table-scroll">
+              <table class="table" aria-label="Open positions">
+                <thead>
+                  <tr>
+                    <th scope="col">Symbol</th>
+                    <th scope="col" class="cell-num">Lots</th>
+                    <th scope="col" class="cell-num">Entry</th>
+                    <th scope="col" class="cell-num hide-sm-col">Current</th>
+                    <th scope="col" class="cell-num">P/L</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody id="positions-body"></tbody>
+              </table>
+            </div>
+            <div class="empty-state empty-compact" id="positions-empty">
+              <i class="fa-solid fa-folder-open"></i>
+              <h4>No open positions</h4>
+              <p>Your filled orders will appear here with live profit &amp; loss.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <p class="terminal-disclaimer muted"><strong>Demo:</strong> simulated feed &amp; paper trading only. No real funds are used.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer footer-slim">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; <span data-year>2026</span> TradePro Markets Ltd.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="risk.html">Risk Disclosure</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/market-data.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js" defer></script>
+  <script src="assets/js/pages/trade.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — TradePro</title>
+  <meta name="description" content="How the TradePro demo handles your data: everything stays in your browser. No tracking, no uploads, no third-party analytics.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('tp_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/pages/legal.css">
+</head>
+<body data-page="privacy">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="30" height="30">Trade<span>Pro</span></a>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="markets.html">Markets</a></li>
+          <li><a href="trade.html">Trade</a></li>
+          <li data-auth="user"><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <div class="nav-cta">
+          <span data-auth="guest"><a href="login.html" class="btn btn-ghost">Log in</a></span>
+          <span data-auth="guest"><a href="register.html" class="btn btn-primary">Get started</a></span>
+          <span data-auth="user">
+            <div class="user-menu">
+              <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false">
+                <span class="avatar" data-user-initials>U</span>
+                <span data-user-name>Account</span>
+                <i class="fa-solid fa-chevron-down" style="font-size:.65rem;color:var(--text-3)"></i>
+              </button>
+              <div class="user-menu-panel" role="menu">
+                <div class="user-menu-header"><strong data-user-name>User</strong><span data-user-email>email@example.com</span></div>
+                <a href="dashboard.html" role="menuitem"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <button type="button" role="menuitem" class="menu-danger" data-action="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button>
+              </div>
+            </div>
+          </span>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i>
+        </button>
+        <button type="button" class="icon-btn nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+          <span class="burger-box"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="legal-shell container">
+      <div class="legal-wrap">
+
+        <aside class="legal-toc" aria-label="On this page">
+          <h4>On this page</h4>
+          <ul>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#data-we-store">Data we store</a></li>
+            <li><a href="#third-parties">Third parties</a></li>
+            <li><a href="#your-rights">Your rights</a></li>
+          </ul>
+        </aside>
+
+        <article class="legal-doc">
+          <h1>Privacy Policy</h1>
+          <p class="doc-meta">Last updated: August 2026 · TradePro demo platform.</p>
+
+          <h2 id="summary">1. Summary</h2>
+          <p><strong>This demo collects nothing and sends nothing.</strong> There is no server, no analytics, no cookies for tracking, and no account database. Everything you do here stays inside your own web browser.</p>
+
+          <h2 id="data-we-store">2. Data we store (locally)</h2>
+          <p>The app uses your browser&rsquo;s <code>localStorage</code> and <code>sessionStorage</code>:</p>
+          <ul>
+            <li><code>tp_state_v1</code> — demo accounts (name, email, hashed password), cash balance, positions, orders, transactions and watchlist.</li>
+            <li><code>tp_session_v1</code> — which demo account is currently logged in.</li>
+            <li><code>tp_theme</code> — light/dark preference.</li>
+            <li>Miscellaneous keys (<code>tp_reset_email</code>, cooldown timestamps) used by the auth flows.</li>
+          </ul>
+          <p>Passwords are stored only as salted hashes produced by a lightweight client-side function. This is adequate for a sandboxed front-end demo but is <strong>not</strong> production-grade cryptography — never reuse a real password here.</p>
+
+          <h2 id="third-parties">3. Third parties</h2>
+          <p>The site loads three static assets from public CDNs: the Inter font (Google Fonts), Font Awesome icons and the TradingView Lightweight Charts library. These requests are standard CDN fetches; they carry no personal information from this application. If you prefer zero external requests, use the site offline after first load where your browser caches allow.</p>
+
+          <h2 id="your-rights">4. Your rights &amp; data removal</h2>
+          <p>You have complete control: open your browser&rsquo;s developer tools → Application → Local Storage and delete the keys above, or use <em>Dashboard → Account settings → Reset demo environment</em>. Since there is no backend, deletion is instant and total.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer footer-slim">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; <span data-year>2026</span> TradePro Markets Ltd.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="risk.html">Risk Disclosure</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/core.js" defer></script>
+</body>
+</html>

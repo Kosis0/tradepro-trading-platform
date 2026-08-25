@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TradePro — Trade Forex, Stocks, Indices & Crypto</title>
+  <meta name="description" content="TradePro is a multi-asset trading platform. Trade forex, stocks, indices, commodities and crypto with tight spreads, fast execution and bank-level security.">
+  <meta property="og:title" content="TradePro — Online Trading Platform">
+  <meta property="og:description" content="Access global markets with tight spreads, fast execution and a powerful trading platform.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('tp_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/pages/home.css">
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/img/favicon.svg" alt="" width="30" height="30">Trade<span>Pro</span>
+      </a>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="markets.html">Markets</a></li>
+          <li><a href="trade.html">Trade</a></li>
+          <li data-auth="user"><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <div class="nav-cta">
+          <span data-auth="guest"><a href="login.html" class="btn btn-ghost">Log in</a></span>
+          <span data-auth="guest"><a href="register.html" class="btn btn-primary">Get started</a></span>
+          <span data-auth="user">
+            <div class="user-menu">
+              <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false">
+                <span class="avatar" data-user-initials>U</span>
+                <span data-user-name>Account</span>
+                <i class="fa-solid fa-chevron-down" style="font-size:.65rem;color:var(--text-3)"></i>
+              </button>
+              <div class="user-menu-panel" role="menu">
+                <div class="user-menu-header"><strong data-user-name>User</strong><span data-user-email>email@example.com</span></div>
+                <a href="dashboard.html" role="menuitem"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <a href="trade.html" role="menuitem"><i class="fa-solid fa-bolt"></i> Trading terminal</a>
+                <button type="button" role="menuitem" class="menu-danger" data-action="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button>
+              </div>
+            </div>
+          </span>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <i class="fa-solid fa-moon icon-moon"></i>
+          <i class="fa-solid fa-sun icon-sun"></i>
+        </button>
+        <button type="button" class="icon-btn nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+          <span class="burger-box"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="hero-badge"><i class="fa-solid fa-shield-halved"></i> Regulated broker · Trusted since 2010</span>
+          <h1>Trade global markets with <em>confidence</em></h1>
+          <p class="hero-sub">Forex, stocks, indices, commodities and crypto in one account. Institutional-grade execution from $0 commission and spreads from 0.0 pips.</p>
+          <div class="hero-cta">
+            <a href="register.html" class="btn btn-primary btn-lg">Open free account</a>
+            <a href="trade.html" class="btn btn-secondary btn-lg"><i class="fa-solid fa-chart-line"></i> Try the demo</a>
+          </div>
+          <dl class="hero-stats">
+            <div><dt>280K+</dt><dd>active traders</dd></div>
+            <div><dt>$18B</dt><dd>monthly volume</dd></div>
+            <div><dt>&lt;50ms</dt><dd>avg. execution</dd></div>
+            <div><dt>28+</dt><dd>instruments</dd></div>
+          </dl>
+        </div>
+        <div class="hero-visual" aria-label="Live market preview (simulated)">
+          <div class="live-card card card-pad">
+            <div class="live-head">
+              <span class="badge badge-up badge-dot">LIVE</span>
+              <div class="live-title">
+                <strong id="live-symbol-name">EUR/USD</strong>
+                <small>Euro / US Dollar</small>
+              </div>
+              <div class="live-price num">
+                <b id="live-price">—</b>
+                <span id="live-change" class="badge badge-neutral">—</span>
+              </div>
+            </div>
+            <canvas id="live-spark" height="130" role="img" aria-label="EUR/USD price sparkline"></canvas>
+            <div class="live-minis" id="live-minis"></div>
+            <p class="live-note muted"><i class="fa-solid fa-circle-info"></i> Simulated market feed for demonstration purposes.</p>
+          </div>
+        </div>
+      </div>
+      <div class="ticker-strip" aria-hidden="true">
+        <div class="ticker-track" id="ticker-track"></div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">Why TradePro</span>
+          <h2>Everything you need to trade smarter</h2>
+          <p>Professional tools that were once reserved for institutional desks — now available in your browser.</p>
+        </div>
+        <div class="features-grid">
+          <article class="feature-card card card-hover">
+            <div class="feature-icon fi-blue"><i class="fa-solid fa-arrow-trend-up"></i></div>
+            <h3>Advanced charts</h3>
+            <p>Candlestick, line, area and bar charts with SMA, EMA, RSI, MACD and Bollinger Bands built in.</p>
+          </article>
+          <article class="feature-card card card-hover">
+            <div class="feature-icon fi-green"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Fast execution</h3>
+            <p>99.99% uptime with median execution speeds under 50 milliseconds on major pairs.</p>
+          </article>
+          <article class="feature-card card card-hover">
+            <div class="feature-icon fi-violet"><i class="fa-solid fa-lock"></i></div>
+            <h3>Bank-level security</h3>
+            <p>Segregated client funds, TLS encryption everywhere and two-factor authentication.</p>
+          </article>
+          <article class="feature-card card card-hover">
+            <div class="feature-icon fi-orange"><i class="fa-solid fa-coins"></i></div>
+            <h3>Tight spreads</h3>
+            <p>Spreads from 0.0 pips on majors with transparent, volume-based pricing.</p>
+          </article>
+          <article class="feature-card card card-hover">
+            <div class="feature-icon fi-teal"><i class="fa-solid fa-wallet"></i></div>
+            <h3>Fast funding</h3>
+            <p>Deposit and withdraw via wire or card. Most withdrawals settle within one business day.</p>
+          </article>
+          <article class="feature-card card card-hover">
+            <div class="feature-icon fi-red"><i class="fa-solid fa-headset"></i></div>
+            <h3>24/5 support</h3>
+            <p>Real humans on live chat whenever the markets are open — not just bots reading scripts.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section markets-preview">
+      <div class="container">
+        <div class="section-head row">
+          <div>
+            <span class="eyebrow">Market watch</span>
+            <h2>Live prices, right here</h2>
+          </div>
+          <a href="markets.html" class="btn btn-secondary btn-sm">View all markets <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="card table-card table-scroll">
+          <table class="table" aria-label="Live market prices preview">
+            <thead>
+              <tr>
+                <th scope="col">Instrument</th>
+                <th scope="col">Asset class</th>
+                <th scope="col" class="cell-num">Price</th>
+                <th scope="col" class="cell-num">Day change</th>
+                <th scope="col" class="cell-num">High / Low</th>
+                <th scope="col" class="cell-num sr-only-mob">Volume</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody id="home-market-body">
+              <tr><td colspan="7"><div class="skeleton-row skeleton"></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section showcase">
+      <div class="container showcase-grid">
+        <div class="showcase-copy">
+          <span class="eyebrow">The platform</span>
+          <h2>A trading terminal that keeps up with you</h2>
+          <ul class="check-list">
+            <li><i class="fa-solid fa-check"></i> One-click market, limit and stop orders</li>
+            <li><i class="fa-solid fa-check"></i> Built-in risk management with stop loss &amp; take profit</li>
+            <li><i class="fa-solid fa-check"></i> Live P/L tracking across all open positions</li>
+            <li><i class="fa-solid fa-check"></i> Performance analytics on your dashboard</li>
+            <li><i class="fa-solid fa-check"></i> Dark mode for late-night sessions</li>
+          </ul>
+          <a href="trade.html" class="btn btn-primary">Launch the terminal <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="showcase-visual card" aria-hidden="true">
+          <div class="showcase-toolbar">
+            <span class="dot red"></span><span class="dot amber"></span><span class="dot green"></span>
+            <span class="mono showcase-tag">EURUSD · 1H</span>
+          </div>
+          <canvas id="showcase-chart" height="260"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-band-wrap">
+      <div class="container">
+        <div class="cta-band">
+          <div>
+            <h2>Ready to make your first trade?</h2>
+            <p>Create an account in under two minutes. No credit card required.</p>
+          </div>
+          <div class="cta-actions">
+            <a href="register.html" class="btn btn-lg cta-btn-light">Create free account</a>
+            <a href="login.html" class="btn btn-lg btn-ghost cta-btn-ghost">I already have one</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="30" height="30">Trade<span>Pro</span></a>
+          <p>The multi-asset platform trusted by 280,000+ traders worldwide since 2010.</p>
+          <div class="social-row">
+            <a href="#" aria-label="TradePro on X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" aria-label="TradePro on YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" aria-label="TradePro on LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" aria-label="TradePro on Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <nav class="footer-col" aria-label="Markets links">
+          <h4>Markets</h4>
+          <ul>
+            <li><a href="markets.html#forex">Forex</a></li>
+            <li><a href="markets.html#stocks">Stocks</a></li>
+            <li><a href="markets.html#indices">Indices</a></li>
+            <li><a href="markets.html#commodities">Commodities</a></li>
+            <li><a href="markets.html#crypto">Crypto</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Company links">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#why">About us</a></li>
+            <li><a href="risk.html">Regulation</a></li>
+            <li><a href="terms.html">Terms of use</a></li>
+            <li><a href="privacy.html">Privacy policy</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Support links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="risk.html">Help center</a></li>
+            <li><a href="trade.html">Trading terminal</a></li>
+            <li><a href="dashboard.html#funding">Deposits &amp; withdrawals</a></li>
+            <li><a href="risk.html#faq">FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span data-year>2026</span> TradePro Markets Ltd. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="risk.html">Risk Disclosure</a>
+        </div>
+      </div>
+      <p class="risk-note"><strong>Risk warning:</strong> CFDs are complex instruments and come with a high risk of losing money rapidly due to leverage. This site is a front-end demonstration with simulated market data — no real money can be deposited or traded.</p>
+    </div>
+  </footer>
+
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/market-data.js" defer></script>
+  <script src="assets/js/pages/home.js" defer></script>
+</body>
+</html>

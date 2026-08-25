@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Risk Disclosure &amp; FAQ — TradePro</title>
+  <meta name="description" content="Understand the risks of trading leveraged products with TradePro, plus answers to frequently asked questions about accounts, funding and withdrawals.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('tp_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/pages/legal.css">
+</head>
+<body data-page="risk">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="30" height="30">Trade<span>Pro</span></a>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="markets.html">Markets</a></li>
+          <li><a href="trade.html">Trade</a></li>
+          <li data-auth="user"><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <div class="nav-cta">
+          <span data-auth="guest"><a href="login.html" class="btn btn-ghost">Log in</a></span>
+          <span data-auth="guest"><a href="register.html" class="btn btn-primary">Get started</a></span>
+          <span data-auth="user">
+            <div class="user-menu">
+              <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false">
+                <span class="avatar" data-user-initials>U</span>
+                <span data-user-name>Account</span>
+                <i class="fa-solid fa-chevron-down" style="font-size:.65rem;color:var(--text-3)"></i>
+              </button>
+              <div class="user-menu-panel" role="menu">
+                <div class="user-menu-header"><strong data-user-name>User</strong><span data-user-email>email@example.com</span></div>
+                <a href="dashboard.html" role="menuitem"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <button type="button" role="menuitem" class="menu-danger" data-action="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button>
+              </div>
+            </div>
+          </span>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i>
+        </button>
+        <button type="button" class="icon-btn nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+          <span class="burger-box"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="legal-shell container">
+      <div class="legal-wrap">
+
+        <aside class="legal-toc" aria-label="On this page">
+          <h4>On this page</h4>
+          <ul>
+            <li><a href="#risks">Risk disclosure</a></li>
+            <li><a href="#leverage">Leverage &amp; margin</a></li>
+            <li><a href="#execution">Execution</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </aside>
+
+        <article class="legal-doc">
+          <h1>Risk disclosure</h1>
+          <p class="doc-meta">Last updated: August 2026 · Applies to the TradePro demo platform.</p>
+
+          <p><strong>TradePro is a front-end demonstration.</strong> Market data is simulated locally in your browser, no real money can be deposited, withdrawn or traded, and no order is ever sent to a real exchange or liquidity provider.</p>
+
+          <h2 id="risks">1. General trading risk warning</h2>
+          <p>In a live environment, contracts for difference (CFDs) and other leveraged instruments are complex products that carry a high risk of losing money rapidly due to leverage. The majority of retail investor accounts lose money when trading CFDs. You should consider whether you understand how these products work and whether you can afford to take the high risk of losing your money.</p>
+          <ul>
+            <li>Past performance is not a reliable indicator of future results.</li>
+            <li>Never trade with money you cannot afford to lose.</li>
+            <li>Leverage magnifies both gains and losses.</li>
+            <li>Prices can move against your position faster than you can react.</li>
+          </ul>
+
+          <h2 id="leverage">2. Leverage and margin</h2>
+          <p>This demo applies the following maximum leverage tiers by asset class:</p>
+          <ul>
+            <li><strong>Forex:</strong> up to 1:100</li>
+            <li><strong>Commodities:</strong> up to 1:20</li>
+            <li><strong>Indices:</strong> up to 1:20</li>
+            <li><strong>Stocks:</strong> up to 1:5</li>
+            <li><strong>Crypto:</strong> up to 1:2</li>
+          </ul>
+          <p>When your margin level falls too low in a live brokerage, positions may be automatically liquidated at prevailing market prices — potentially at a loss you did not anticipate.</p>
+
+          <h2 id="execution">3. Execution and pricing</h2>
+          <p>All prices shown on this demo are generated by a local random-walk simulation. They do not reflect real market prices, spreads or liquidity. In production environments, execution speeds and slippage can vary with market conditions.</p>
+
+          <h2 id="faq">4. Frequently asked questions</h2>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>Is this a real brokerage?</summary>
+              <div class="faq-body">No. TradePro is a UI/UX demonstration. Accounts, balances, orders and market data exist only inside your own browser via localStorage.</div>
+            </details>
+            <details class="faq-item">
+              <summary>How do I log in?</summary>
+              <div class="faq-body">Use the seeded demo account: <strong>demo@tradepro.com</strong> with password <strong>Demo1234!</strong>. Or create a new account from the register page — it stays entirely on this device.</div>
+            </details>
+            <details class="faq-item">
+              <summary>Where is my data stored?</summary>
+              <div class="faq-body">Everything (profile, balance, watchlist, positions) lives in your browser&rsquo;s localStorage under the key <code>tp_state_v1</code>. Clearing site data resets everything. Nothing is uploaded anywhere.</div>
+            </details>
+            <details class="faq-item">
+              <summary>Why did my limit order fill instantly?</summary>
+              <div class="faq-body">Pending limit and stop orders are checked against the simulated feed every second. If price touches your trigger level, the fill is immediate — just like a fast-moving real market.</div>
+            </details>
+            <details class="faq-item">
+              <summary>Can I use this as a template for a real product?</summary>
+              <div class="faq-body">The layout and components are yours to reuse, but any real deployment requires a licensed broker backend, KYC/AML flows, regulatory approval and a proper security audit.</div>
+            </details>
+            <details class="faq-item">
+              <summary>Does it cost anything?</summary>
+              <div class="faq-body">No. It is a free front-end demo with no ads, no tracking and no server calls except CDN-hosted fonts, icons and the charting library.</div>
+            </details>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer footer-slim">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; <span data-year>2026</span> TradePro Markets Ltd.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="risk.html">Risk Disclosure</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/core.js" defer></script>
+</body>
+</html>

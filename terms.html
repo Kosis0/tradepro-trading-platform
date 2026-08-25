@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms &amp; Conditions — TradePro</title>
+  <meta name="description" content="The terms of use for the TradePro demonstration platform.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('tp_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/pages/legal.css">
+</head>
+<body data-page="terms">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="30" height="30">Trade<span>Pro</span></a>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="markets.html">Markets</a></li>
+          <li><a href="trade.html">Trade</a></li>
+          <li data-auth="user"><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <div class="nav-cta">
+          <span data-auth="guest"><a href="login.html" class="btn btn-ghost">Log in</a></span>
+          <span data-auth="guest"><a href="register.html" class="btn btn-primary">Get started</a></span>
+          <span data-auth="user">
+            <div class="user-menu">
+              <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false">
+                <span class="avatar" data-user-initials>U</span>
+                <span data-user-name>Account</span>
+                <i class="fa-solid fa-chevron-down" style="font-size:.65rem;color:var(--text-3)"></i>
+              </button>
+              <div class="user-menu-panel" role="menu">
+                <div class="user-menu-header"><strong data-user-name>User</strong><span data-user-email>email@example.com</span></div>
+                <a href="dashboard.html" role="menuitem"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <button type="button" role="menuitem" class="menu-danger" data-action="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button>
+              </div>
+            </div>
+          </span>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i>
+        </button>
+        <button type="button" class="icon-btn nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+          <span class="burger-box"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="legal-shell container">
+      <div class="legal-wrap">
+
+        <aside class="legal-toc" aria-label="On this page">
+          <h4>On this page</h4>
+          <ul>
+            <li><a href="#acceptance">Acceptance</a></li>
+            <li><a href="#demo-scope">Scope of the demo</a></li>
+            <li><a href="#accounts">Accounts</a></li>
+            <li><a href="#acceptable-use">Acceptable use</a></li>
+            <li><a href="#liability">Liability</a></li>
+            <li><a href="#changes">Changes</a></li>
+          </ul>
+        </aside>
+
+        <article class="legal-doc">
+          <h1>Terms &amp; Conditions</h1>
+          <p class="doc-meta">Last updated: August 2026 · TradePro demo platform.</p>
+
+          <h2 id="acceptance">1. Acceptance of terms</h2>
+          <p>By accessing or using the TradePro website you agree to these Terms &amp; Conditions. If you do not agree, please discontinue use immediately.</p>
+
+          <h2 id="demo-scope">2. Scope of the demo</h2>
+          <ul>
+            <li>TradePro is a non-commercial front-end demonstration of a trading platform.</li>
+            <li>All market prices are simulated locally; they do not represent real instruments.</li>
+            <li>No real funds can be deposited, traded, won or lost.</li>
+            <li>Nothing on this site constitutes financial advice or an offer to transact.</li>
+          </ul>
+
+          <h2 id="accounts">3. Accounts</h2>
+          <p>Demo accounts are created in your browser only. You are responsible for keeping any credentials you create safe on your own device. Accounts may be removed by resetting browser storage at any time.</p>
+
+          <h2 id="acceptable-use">4. Acceptable use</h2>
+          <ul>
+            <li>Do not misrepresent this demo as a licensed brokerage.</li>
+            <li>Do not attempt to break, overload or reverse-engineer third-party CDNs used for fonts, icons or charts.</li>
+            <li>You may reuse the interface code for your own projects at your own risk.</li>
+          </ul>
+
+          <h2 id="liability">5. Limitation of liability</h2>
+          <p>The software is provided &ldquo;as is&rdquo;, without warranty of any kind. To the maximum extent permitted by law, the authors shall not be liable for any claim, damages or other liability arising from the use of this demo — including trading decisions someone mistakenly makes based on simulated data.</p>
+
+          <h2 id="changes">6. Changes to these terms</h2>
+          <p>We may update these terms at any time by publishing a new version on this page. Continued use after changes constitutes acceptance.</p>
+
+          <p>If you have questions, refer to the <a href="risk.html#faq">FAQ</a> or the <a href="risk.html">risk disclosure</a>.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer footer-slim">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; <span data-year>2026</span> TradePro Markets Ltd.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="risk.html">Risk Disclosure</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/core.js" defer></script>
+</body>
+</html>

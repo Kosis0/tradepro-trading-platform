@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markets — TradePro</title>
+  <meta name="description" content="Browse live prices across forex, stocks, indices, commodities and crypto on TradePro. Search, filter and add instruments to your watchlist.">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem('tp_theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.setAttribute('data-theme',t)}catch(e){document.documentElement.setAttribute('data-theme','light')}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/pages/markets.css">
+</head>
+<body data-page="markets">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html"><img src="assets/img/favicon.svg" alt="" width="30" height="30">Trade<span>Pro</span></a>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="markets.html" aria-current="page">Markets</a></li>
+          <li><a href="trade.html">Trade</a></li>
+          <li data-auth="user"><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+        <div class="nav-cta">
+          <span data-auth="guest"><a href="login.html" class="btn btn-ghost">Log in</a></span>
+          <span data-auth="guest"><a href="register.html" class="btn btn-primary">Get started</a></span>
+          <span data-auth="user">
+            <div class="user-menu">
+              <button type="button" class="user-chip" aria-haspopup="true" aria-expanded="false">
+                <span class="avatar" data-user-initials>U</span>
+                <span data-user-name>Account</span>
+                <i class="fa-solid fa-chevron-down" style="font-size:.65rem;color:var(--text-3)"></i>
+              </button>
+              <div class="user-menu-panel" role="menu">
+                <div class="user-menu-header"><strong data-user-name>User</strong><span data-user-email>email@example.com</span></div>
+                <a href="dashboard.html" role="menuitem"><i class="fa-solid fa-chart-pie"></i> Dashboard</a>
+                <button type="button" role="menuitem" class="menu-danger" data-action="logout"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button>
+              </div>
+            </div>
+          </span>
+        </div>
+      </nav>
+      <div class="header-actions">
+        <button type="button" class="icon-btn" id="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <i class="fa-solid fa-moon icon-moon"></i><i class="fa-solid fa-sun icon-sun"></i>
+        </button>
+        <button type="button" class="icon-btn nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Toggle menu">
+          <span class="burger-box"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="markets-page">
+      <div class="container">
+        <div class="page-head">
+          <h1>Markets</h1>
+          <p>Live prices across every asset class. Click any instrument to open it in the trading terminal.</p>
+        </div>
+
+        <div class="markets-toolbar">
+          <div class="seg" id="class-tabs" role="tablist" aria-label="Asset classes">
+            <button class="seg-btn" role="tab" data-class="all" aria-selected="true">All</button>
+            <button class="seg-btn" role="tab" data-class="forex" aria-selected="false">Forex</button>
+            <button class="seg-btn" role="tab" data-class="stocks" aria-selected="false">Stocks</button>
+            <button class="seg-btn" role="tab" data-class="indices" aria-selected="false">Indices</button>
+            <button class="seg-btn" role="tab" data-class="commodities" aria-selected="false">Commodities</button>
+            <button class="seg-btn" role="tab" data-class="crypto" aria-selected="false">Crypto</button>
+          </div>
+
+          <div class="toolbar-filters">
+            <div class="search-wrap">
+              <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+              <label class="sr-only" for="market-search">Search instruments</label>
+              <input type="search" id="market-search" class="control" placeholder="Search instrument…" autocomplete="off">
+            </div>
+            <div class="filter-select">
+              <label class="sr-only" for="sort-by">Sort markets</label>
+              <select id="sort-by" class="control">
+                <option value="name">Sort: Name</option>
+                <option value="price">Sort: Price</option>
+                <option value="change">Sort: Top movers</option>
+                <option value="volume">Sort: Volume</option>
+              </select>
+            </div>
+            <div class="filter-select">
+              <label class="sr-only" for="watch-filter">Watchlist filter</label>
+              <select id="watch-filter" class="control">
+                <option value="all">All instruments</option>
+                <option value="watch">My watchlist ★</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="card table-card table-scroll">
+          <table class="table" aria-label="Live market prices">
+            <thead>
+              <tr>
+                <th scope="col">Instrument</th>
+                <th scope="col" class="cell-num">Price</th>
+                <th scope="col" class="cell-num">Day change</th>
+                <th scope="col" class="cell-num hide-md">High / Low</th>
+                <th scope="col" class="cell-num hide-md">Volume</th>
+                <th scope="col" class="cell-num">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="markets-body">
+              <tr><td colspan="6"><div class="skeleton-row skeleton"></div><div class="skeleton-row skeleton"></div><div class="skeleton-row skeleton"></div><div class="skeleton-row skeleton"></div><div class="skeleton-row skeleton"></div></td></tr>
+            </tbody>
+          </table>
+
+          <div class="empty-state" id="empty-state" hidden>
+            <i class="fa-solid fa-magnifying-glass-minus"></i>
+            <h4>No instruments found</h4>
+            <p>Try a different search term or switch asset class.</p>
+          </div>
+        </div>
+
+        <div class="markets-footer-bar">
+          <p class="muted" id="page-info">Loading…</p>
+          <nav class="pager" id="pager" aria-label="Table pagination">
+            <button class="icon-btn" id="prev-page" aria-label="Previous page"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="pager-pages" id="page-numbers"></div>
+            <button class="icon-btn" id="next-page" aria-label="Next page"><i class="fa-solid fa-chevron-right"></i></button>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer footer-slim">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; <span data-year>2026</span> TradePro Markets Ltd.</p>
+        <div class="footer-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms &amp; Conditions</a>
+          <a href="risk.html">Risk Disclosure</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/core.js" defer></script>
+  <script src="assets/js/market-data.js" defer></script>
+  <script src="assets/js/pages/markets.js" defer></script>
+</body>
+</html>
