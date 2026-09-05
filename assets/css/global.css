@@ -759,10 +759,10 @@ body.nav-open::after {
 .page-head h1 { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 6px; }
 .page-head p { color: var(--text-2); }
 
-.price-flash-up { animation: flashUp 0.6s ease; }
-.price-flash-down { animation: flashDown 0.6s ease; }
-@keyframes flashUp { 0% { color: var(--up); } 100% { color: inherit; } }
-@keyframes flashDown { 0% { color: var(--down); } 100% { color: inherit; } }
+.price-flash-up { animation: flashUp 0.25s ease-out; border-radius: var(--radius-sm); }
+.price-flash-down { animation: flashDown 0.25s ease-out; border-radius: var(--radius-sm); }
+@keyframes flashUp { 0% { color: var(--up); background-color: var(--up-soft); } 100% { color: inherit; background-color: transparent; } }
+@keyframes flashDown { 0% { color: var(--down); background-color: var(--down-soft); } 100% { color: inherit; background-color: transparent; } }
 
 @media (max-width: 1024px) {
   .footer-main { grid-template-columns: 1fr 1fr; }
